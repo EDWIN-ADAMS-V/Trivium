@@ -499,42 +499,77 @@ const QuizQuestion = ({ question, index, totalQuestions, onAnswer, timerValue })
 };
 
 const StartScreen = ({ onStartQuiz, onNavigate }) => {
-    return (
-        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4">
-            <h2 className="text-4xl font-extrabold text-black-900 mb-4">Welcome to Trivium</h2>
-            <p className="text-xl text-brown-600 mb-10">Test your knowledge across core professional domains.</p>
+  return (
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <div className="w-full max-w-5xl border-4 border-indigo-300 rounded-2xl shadow-lg p-6 text-center">
+    <h2 className="text-4xl font-extrabold text-black mb-4">
+      Welcome to Trivium
+    </h2>
+    <p className="text-xl text-gray-700 mb-10">
+      Test your knowledge across core professional domains.
+    </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                {['Aptitude', 'Logical', 'Technical'].map(category => (
-                    <div
-                        key={category}
-                        className="p-6 border-4 border-indigo-300 rounded-xl cursor-pointer hover:shadow-2xl transition duration-300 transform hover:scale-[1.05] bg-indigo-50 hover:bg-indigo-100"
-                        onClick={() => onStartQuiz(category)}
-                    >
-                        <div className="text-indigo-600 mb-2">{category === 'Aptitude' ? <Gauge className="w-8 h-8 mx-auto" /> : category === 'Logical' ? <Cpu className="w-8 h-8 mx-auto" /> : <Code className="w-8 h-8 mx-auto" />}</div>
-                        <h3 className="text-xl font-bold text-indigo-700">{category}</h3>
-                        <p className="text-sm text-gray-500 mt-1">{QUESTIONS[category].length} Questions</p>
-                    </div>
-                ))}
-            </div>
-
-            <div className="flex justify-center space-x-4">
-                <Button onClick={() => onNavigate('learn_screen')} variant="secondary" className="sm:w-auto w-full max-w-sm">
-                    <BookOpen className="w-5 h-5 mr-2" /> View Study Material
-                </Button>
-                 <Button onClick={() => onNavigate('about_screen')} variant="secondary" className="sm:w-auto w-full max-w-sm">
-                    <Info className="w-5 h-5 mr-2" /> About App
-                </Button>
-                <Button onClick={() => onNavigate("leaderboard_screen")} variant="secondary" className="sm:w-auto w-full max-w-sm">
-                     View Global Leaderboard
-                </Button>
-                <Button onClick={() => onNavigate('feedback_screen')} variant="secondary">
-                     Send Feedback
-                </Button>
-            </div>
+    {/* Quiz Categories */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {['Aptitude', 'Logical', 'Technical'].map(category => (
+        <div
+          key={category}
+          className="p-6 border-2 border-indigo-200 rounded-xl cursor-pointer hover:shadow-2xl transition duration-300 transform hover:scale-[1.05] bg-indigo-50 hover:bg-indigo-100"
+          onClick={() => onStartQuiz(category)}
+        >
+          <div className="text-indigo-600 mb-2">
+            {category === 'Aptitude' ? (
+              <Gauge className="w-8 h-8 mx-auto" />
+            ) : category === 'Logical' ? (
+              <Cpu className="w-8 h-8 mx-auto" />
+            ) : (
+              <Code className="w-8 h-8 mx-auto" />
+            )}
+          </div>
+          <h3 className="text-xl font-bold text-indigo-700">{category}</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            {QUESTIONS[category].length} Questions
+          </p>
         </div>
-    );
+      ))}
+    </div>
+
+    {/* Action Buttons */}
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+      <Button
+        onClick={() => onNavigate('learn_screen')}
+        variant="secondary"
+        className="w-full sm:w-auto max-w-sm"
+      >
+        <BookOpen className="w-5 h-5 mr-2" /> View Study Material
+      </Button>
+      <Button
+        onClick={() => onNavigate('about_screen')}
+        variant="secondary"
+        className="w-full sm:w-auto max-w-sm"
+      >
+        <Info className="w-5 h-5 mr-2" /> About App
+      </Button>
+      <Button
+        onClick={() => onNavigate('leaderboard_screen')}
+        variant="secondary"
+        className="w-full sm:w-auto max-w-sm"
+      >
+        View Global Leaderboard
+      </Button>
+      <Button
+        onClick={() => onNavigate('feedback_screen')}
+        variant="secondary"
+        className="w-full sm:w-auto max-w-sm"
+      >
+        Send Feedback
+      </Button>
+    </div>
+  </div>
+</section>
+  );
 };
+
 
 const CollapsibleSection = ({ subtopic, icon: Icon, content, youtube }) => {
     const [isOpen, setIsOpen] = useState(false);
