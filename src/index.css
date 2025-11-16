@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Animated Gradient Background */
+.animated-bg {
+  background: linear-gradient(-45deg, #8b5cf6, #6366f1, #a855f7, #3b82f6);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Particle Container */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Particle Style */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+  animation: floatUp linear infinite;
+  opacity: 0.8;
+}
+
+/* Create random floating motion */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(40px);
+    opacity: 0;
+  }
+}
+
+/* Randomize each particle */
+.particle {
+  animation-duration: calc(8s + (var(--i) * 0.5s));
+  animation-delay: calc(var(--i) * -0.5s);
 }
