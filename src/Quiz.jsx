@@ -701,7 +701,7 @@ const AboutScreen = ({ onNavigate }) => (
                 <div className="p-4 border border-indigo-200 rounded-lg shadow-sm">
                     <Gauge className="w-6 h-6 text-indigo-600 mb-2" />
                     <h4 className="font-bold text-lg">Three Core Domains</h4>
-                    <p className="text-sm">Focused question sets in **Aptitude**, **Logical Reasoning**, and **Technical** skills.</p>
+                    <p className="text-sm">Focused question sets in Aptitude, Logical Reasoning, and Technical skills.</p>
                 </div>
             </div>
 
@@ -711,15 +711,15 @@ const AboutScreen = ({ onNavigate }) => (
                 <div className="p-4 bg-gray-50 border rounded-lg">
                     <h4 className="font-bold text-lg text-indigo-700 flex items-center"><Code className="w-5 h-5 mr-1" /> Frontend Stack</h4>
                     <ul className="list-disc space-y-1 ml-5 text-sm mt-1">
-                        <li>**React:** For the responsive, component-based user interface.</li>
-                        <li>**Tailwind CSS:** Used for all styling, ensuring a fast, mobile-first design.</li>
-                        <li>**Lucide Icons:** Provides clean, functional icons for visual clarity.</li>
+                        <li>React: For the responsive, component-based user interface.</li>
+                        <li>Tailwind CSS: Used for all styling, ensuring a fast, mobile-first design.</li>
+                        <li>Lucide Icons: Provides clean, functional icons for visual clarity.</li>
                     </ul>
                 </div>
                 <div className="p-4 bg-gray-50 border rounded-lg">
                     <h4 className="font-bold text-lg text-indigo-700 flex items-center"><Database className="w-5 h-5 mr-1" /> Backend Readiness</h4>
                     <p className="text-sm mt-1">
-                        The score tracking and global leaderboard functionality is currently disabled but is architecturally ready for immediate integration with a dedicated **Firebase/Firestore** backend upon project deployment.
+                        The score tracking and global leaderboard functionality is currently disabled but is architecturally ready for immediate integration with a dedicated Firebase/Firestore backend upon project deployment.
                     </p>
                 </div>
             </div>
@@ -935,7 +935,7 @@ const App = () => {
   try {
     const colName = `leaderboard_${category}`;
     const leaderboardRef = collection(db, colName);
-    const q = query(leaderboardRef, orderBy("score", "desc"), limit(10));
+    const q = query(leaderboardRef, orderBy("score", "desc"), limit(30));
 
     const snapshot = await getDocs(q);
 
